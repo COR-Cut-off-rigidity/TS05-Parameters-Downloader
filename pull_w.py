@@ -16,14 +16,30 @@ varsArray = [
     '21','22','23','24',
     '25','26','27','28',
     '29','30',
-    '31','32', '33',
+    '31','32','33',
     '34','35','36',
+    ]
+varsArray = [
+    '4','5','6','7',
+    '8','9','10','11','12',
+    '13','14','15','16',
+    '17','18','19','20',
+    '21','22','23','24',
+    '25','26','44',
+    '27','28','29',
+    '30','45',
+    '31','32','33',
+    '34','35','36',
+    '37','38','39',
+
+    '40','41','42','43',
+    '46','47','48',
     ]
 varsLen = len(varsArray)
 
 def getTrueEndDate():
     trueEndDatetime = Time(datetime.utcnow(), scale='utc').strftime('%Y%m%d')
-    payload = {'activity': 'retrieve', 'res': '5min', 'spacecraft': 'omni_5min', 'start_date': trueEndDatetime, 'end_date': trueEndDatetime, 'vars': varsArray}
+    payload = {'activity': 'retrieve', 'res': '5min', 'spacecraft': 'omni_5min_def', 'start_date': trueEndDatetime, 'end_date': trueEndDatetime, 'vars': varsArray}
     r = requests.get(baseUrl, params=payload)
     pq = PyQuery(r.text)
 
@@ -36,7 +52,7 @@ def getTrueEndDate():
 
 def get5minDataForDates(startDate, endDate):
     print(startDate, endDate)
-    payload = {'activity': 'retrieve', 'res': '5min', 'spacecraft': 'omni_5min', 'start_date': startDate, 'end_date': endDate, 'vars': varsArray}
+    payload = {'activity': 'retrieve', 'res': '5min', 'spacecraft': 'omni_5min_def', 'start_date': startDate, 'end_date': endDate, 'vars': varsArray}
     r = requests.get(baseUrl, params=payload)
     outputArray = r.text.split('\n')
     trimmedArray = outputArray[(7 + varsLen):-16]
@@ -70,7 +86,6 @@ def parallelPullOmni(year):
 		file.write(dataArray)
 
 baseUrl = "https://omniweb.gsfc.nasa.gov/cgi/nx1.cgi"
-startDatetimeGlobal = Time('1995-01-01 00:00:00', scale='utc')
 endDatetimeGlobal = getTrueEndDate()
 print(str(endDatetimeGlobal.strftime('%Y%m%d')))
 lastYear = int(Time(datetime.utcnow(), scale='utc').strftime('%Y'))

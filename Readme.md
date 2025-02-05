@@ -8,7 +8,7 @@ To run the script you need [Python](https://www.python.org/) and [pip](https://p
 
 ### Additional requirements
 
-This script relies on Fortran programs originally developed by Dr. N. A. Tsyganenko available from his [website](https://pypi.org/project/pip/). To compile them you will need a Fortran compiler for example the [GNU Fortran](https://www.gnu.org/software/gcc//fortran/) compiler. On Ubuntu, you can install it with the command `sudo apt install gfortran`. Original versions of these scripts can be found here:
+This script relies on Fortran programs originally developed by Dr. N. A. Tsyganenko available from his [website](https://geo.phys.spbu.ru/~tsyganenko/TS05_data_and_stuff/). To compile them you will need a Fortran compiler for example the [GNU Fortran](https://www.gnu.org/software/gcc//fortran/) compiler. On Ubuntu, you can install it with the command `sudo apt install gfortran`. Original versions of these scripts can be found here:
 
 - [Fill_IMF_gaps.for](https://geo.phys.spbu.ru/~tsyganenko/models/ts05/Fill_IMF_gaps.f)
 - [Fill_SW_gaps.for](https://geo.phys.spbu.ru/~tsyganenko/models/ts05/Fill_SW_gaps.f)
